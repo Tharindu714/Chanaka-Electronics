@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table ceonline.admin: ~2 rows (approximately)
 REPLACE INTO `admin` (`email`, `fname`, `lname`, `verification_code`) VALUES
 	('chanakaelectro@gmail.com', 'Chanaka', 'Electronics', '66e54cc5eed9d'),
-	('tharinduchanaka6@gmail.com', 'Tharindu', 'Chanaka', '66ded36696b60');
+	('tharinduchanaka6@gmail.com', 'Tharindu', 'Chanaka', '66ead7cac80a3');
 
 -- Dumping structure for table ceonline.cart
 CREATE TABLE IF NOT EXISTS `cart` (
@@ -61,7 +61,7 @@ REPLACE INTO `category` (`c_id`, `name`, `path`) VALUES
 	(1, 'Electronics', 'category/electronic.jpg'),
 	(2, 'Electricals', 'category/electrical.jpg'),
 	(3, 'Spare Parts', 'category/spareparts.png'),
-	(4, 'Mobile Phone', NULL);
+	(4, 'Mobile Phone', 'category/MobilePhone.jpg');
 
 -- Dumping structure for table ceonline.chat
 CREATE TABLE IF NOT EXISTS `chat` (
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   PRIMARY KEY (`img_id`) USING BTREE,
   KEY `fk_image_product1_idx` (`product_id`),
   CONSTRAINT `fk_image_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=644 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=683 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table ceonline.image: ~378 rows (approximately)
 REPLACE INTO `image` (`img_id`, `code`, `product_id`) VALUES
@@ -692,7 +692,46 @@ REPLACE INTO `image` (`img_id`, `code`, `product_id`) VALUES
 	(640, 'category//Product//Wireless Collar Microphone K35_2_66e5b29320ad4.jpeg', 104),
 	(641, 'category//Product//Wireless Collar Microphone K35_3_66e5b29321524.jpeg', 104),
 	(642, 'category//Product//Wireless Collar Microphone K35_4_66e5b293222ba.jpeg', 104),
-	(643, 'category//Product//Wireless Collar Microphone K35_5_66e5b29322cef.jpeg', 104);
+	(643, 'category//Product//Wireless Collar Microphone K35_5_66e5b29322cef.jpeg', 104),
+	(644, 'category//Product//Fluke VT02 Visual IR Thermometer_0_66eadfae68b33.jpeg', 105),
+	(645, 'category//Product//Fluke VT02 Visual IR Thermometer_1_66eadfae69814.jpeg', 105),
+	(646, 'category//Product//Fluke VT02 Visual IR Thermometer_2_66eadfae69fd6.jpeg', 105),
+	(647, 'category//Product//Fluke VT02 Visual IR Thermometer_3_66eadfae6ac01.jpeg', 105),
+	(648, 'category//Product//Fluke VT02 Visual IR Thermometer_4_66eadfae6b317.jpeg', 105),
+	(649, 'category//Product//Fluke VT02 Visual IR Thermometer_5_66eadfae6be09.jpeg', 105),
+	(650, 'category//Product//Samsung Galaxy A15 5G_0_66eae276e1480.jpeg', 106),
+	(651, 'category//Product//Samsung Galaxy A15 5G_1_66eae276e218c.jpeg', 106),
+	(652, 'category//Product//Samsung Galaxy A15 5G_2_66eae276e2882.jpeg', 106),
+	(653, 'category//Product//Samsung Galaxy A15 5G_3_66eae276e33b8.jpeg', 106),
+	(654, 'category//Product//Samsung Galaxy A15 5G_4_66eae276e3b91.jpeg', 106),
+	(655, 'category//Product//Samsung Galaxy A15 5G_5_66eae276e477e.jpeg', 106),
+	(656, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_0_66eae57bece47.jpeg', 107),
+	(657, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_1_66eae57bedbe2.jpeg', 107),
+	(658, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_2_66eae57bee47c.jpeg', 107),
+	(659, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_3_66eae57bef05d.jpeg', 107),
+	(660, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_4_66eae57bef828.jpeg', 107),
+	(661, 'category//Product//Samsung Galaxy A15 4G 6GB RAM 128GB Memory_5_66eae57bf035a.jpeg', 107),
+	(662, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_0_66eaeeab6ee51.jpeg', 108),
+	(663, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_1_66eaeeab6fab4.jpeg', 108),
+	(664, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_2_66eaeeab70267.jpeg', 108),
+	(665, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_3_66eaeeab70db2.jpeg', 108),
+	(666, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_4_66eaeeab714ef.jpeg', 108),
+	(667, 'category//Product//XIAOMI Redmi A3 3GB RAM 64GB Memory_5_66eaeeab72057.jpeg', 108),
+	(668, 'category//Product//Xiaomi A3 4GB RAM 128GB Memory_0_66eaf3c3b25f6.jpeg', 109),
+	(669, 'category//Product//Xiaomi A3 4GB RAM 128GB Memory_1_66eaf3c3b2ef5.jpeg', 109),
+	(670, 'category//Product//Xiaomi A3 4GB RAM 128GB Memory_2_66eaf3c3b3ad4.jpeg', 109),
+	(671, 'category//Product//Xiaomi A3 4GB RAM 128GB Memory_3_66eaf3c3b499b.jpeg', 109),
+	(672, 'category//Product//Xiaomi A3 4GB RAM 128GB Memory_4_66eaf3c3b514c.jpeg', 109),
+	(673, 'category//Product//Xiaomi Redmi 13C 4GB RAM 128GB Memory_0_66eaf65dda92c.jpeg', 110),
+	(674, 'category//Product//Xiaomi Redmi 13C 4GB RAM 128GB Memory_1_66eaf65ddb205.jpeg', 110),
+	(675, 'category//Product//Xiaomi Redmi 13C 4GB RAM 128GB Memory_2_66eaf65ddbe5a.jpeg', 110),
+	(676, 'category//Product//Xiaomi Redmi 13C 4GB RAM 128GB Memory_3_66eaf65ddc62d.jpeg', 110),
+	(677, 'category//Product//Xiaomi Redmi 13C 4GB RAM 128GB Memory_4_66eaf65ddd1d5.jpeg', 110),
+	(678, 'category//Product//REDMI 13c 5G 6GB RAM 128GB Memory_0_66eb000b9e644.jpeg', 111),
+	(679, 'category//Product//REDMI 13c 5G 6GB RAM 128GB Memory_1_66eb000b9eeee.jpeg', 111),
+	(680, 'category//Product//REDMI 13c 5G 6GB RAM 128GB Memory_2_66eb000b9fac3.jpeg', 111),
+	(681, 'category//Product//REDMI 13c 5G 6GB RAM 128GB Memory_3_66eb000ba01ec.jpeg', 111),
+	(682, 'category//Product//REDMI 13c 5G 6GB RAM 128GB Memory_4_66eb000ba0e23.jpeg', 111);
 
 -- Dumping structure for table ceonline.invoice
 CREATE TABLE IF NOT EXISTS `invoice` (
@@ -710,9 +749,11 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   KEY `fk_invoice_user1_idx` (`user_email`),
   CONSTRAINT `fk_invoice_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_invoice_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table ceonline.invoice: ~0 rows (approximately)
+REPLACE INTO `invoice` (`id`, `order_id`, `date`, `total`, `d_status`, `iqty`, `product_id`, `user_email`, `remove_status`) VALUES
+	(23, '66e6a2be64634', '2024-09-15', 650, 0, 1, 90, 'tharinduchanaka6@gmail.com', 1);
 
 -- Dumping structure for table ceonline.product
 CREATE TABLE IF NOT EXISTS `product` (
@@ -737,7 +778,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_product_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`c_id`),
   CONSTRAINT `fk_product_status1` FOREIGN KEY (`status_id`) REFERENCES `status` (`s_id`),
   CONSTRAINT `fk_product_supplier1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table ceonline.product: ~72 rows (approximately)
 REPLACE INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_added`, `delivery_fee_colombo`, `delivery_fee_other`, `status_id`, `category_id`, `admin_email`, `supplier_id`) VALUES
@@ -819,7 +860,7 @@ REPLACE INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_
 	(87, 2800, 20, 'Model No: GM-3107 <br/>\r\nMagic Stainless Steel Blade <br/>\r\nCut Hair Very Easy <br/>\r\n3 in 1 Nose & Ear Hair Trimmer <br/>\r\nNose Head, Small Trimmer Head, Eyebrow Trimmer <br/>\r\nVoltage: 220-240V 50/60Hz 3W <br/>\r\nIntelligent Anti-clip System <br/>\r\nHigh Speed Motor <br/>\r\nLong Service Life <br/>\r\nPowerful Motor <br/>\r\nSpecial Cord <br/>\r\nProtective Cap <br/>\r\nBig Size Trimmer For Beard <br/>\r\nSideburn and Long Hair <br/>\r\nSmall trimmer Head For Nose, Ear and Short Hair <br/>\r\n8 Hours Charging <br/>\r\n60 Minutes Use <br/>\r\nCharging Indicator <br/>', 'Gemei Rechargeable Trimmer GM 3107 ', '2024-09-09 08:10:42', 300, 350, 1, 1, 'chanakaelectro@gmail.com', 1),
 	(88, 2850, 20, 'Fast hyper charger for samsung galaxy, infinix, tecno and any other type-c phone s. it also indicate fast charging when p and very affordable with cool price Accessories-Charger <br/>\r\nModel: CH-NOTE12 Input: 100-240V~50/60Hz 2.5A Output:5.0V=3.0A or 4.0-20.0V =6.0A 120.0W MAX The output mode of the product can be adjust automatically by the load <br/>', 'Fast Charger with USB to Type C Cable', '2024-09-09 08:27:27', 300, 350, 1, 1, 'chanakaelectro@gmail.com', 1),
 	(89, 5750, 10, '<b>Experience the Future of Charging with Maphie s 20000mAh Transparent PD66W Two-Way Fast Charging Power Bank </b><br/><br/>\r\n\r\nRevolutionize your charging experience with the Maphie Power Bank. Boasting a powerful 20000mAh capacity, this portable charger effortlessly meets the fast-charging demands of smartphones, cameras, tablets, e-readers, and more.<br/><br/>\r\nCompact yet powerful, the Maphie Power Bank features a sleek design that seamlessly combines functionality with a touch of retro cyberpunk aesthetics. Its transparent casing allows users to visually engage with its inner workings, accentuated by an intuitive IPS display showcasing the battery level.<br/><br/>\r\nEquipped with dual USB-C and USB-A terminals, this power bank stays ahead of the curve in technology transitions. The 66W power output ensures compatibility with a wide array of devices, offering versatile charging options for tech enthusiasts.<br/><br/>\r\nSafety is a top priority, and the Power Bank integrates an Advanced Intelligent Protection Chip, providing comprehensive protection against overcharge, discharge, overload, short circuit, and leakage. This guarantees a secure and reliable charging experience. <br/><br/>\r\nDesigned for globetrotters, the Maphie Power Bank is travel-friendly and TSA-approved for carry-on baggage. Its ergonomic design and compact dimensions ensure hassle-free portability, while the LED display keeps users informed about the remaining battery charge. <br/><br/>', 'Power Bank 2000mah Maphie', '2024-09-09 08:38:15', 300, 350, 1, 1, 'chanakaelectro@gmail.com', 1),
-	(90, 650, 40, 'Using environment-friendly <br/>\r\nmaterial TPE <br/>\r\nHigh-speed charging and data transmission <br/>\r\nHigh-quality material, ensuring difficult to pull off <br/>', 'Data Cable CB-09 ', '2024-09-09 08:51:54', 300, 350, 1, 2, 'chanakaelectro@gmail.com', 1),
+	(90, 650, 39, 'Using environment-friendly <br/>\r\nmaterial TPE <br/>\r\nHigh-speed charging and data transmission <br/>\r\nHigh-quality material, ensuring difficult to pull off <br/>', 'Data Cable CB-09 ', '2024-09-09 08:51:54', 300, 350, 1, 2, 'chanakaelectro@gmail.com', 1),
 	(91, 14000, 20, 'KTS 1762 karaoke speaker with remote and wireless Mic <br/>\r\nSpeaker size:2 x 8inches <br/>\r\nAdjust Echo / Base <br/>\r\nRGB LED Light System <br/>\r\nFM Radio/USB/TF <br/>\r\nWireless Transmission Up to 10m <br/>\r\nBattery Capacity up to 2400mah <br/>\r\nUSB Charging <br/><br/>\r\n\r\n<b>Get ready to sing your heart out and entertain your friends with the Karaoke Portable Party Speaker with Wireless Mic.</b><br/><br/>\r\n\r\nThe Karaoke Portable Party Speaker KTS 1762 features wireless microphone capabilities, making it incredibly easy to use. Say goodbye to tangled cords and hello to hassle-free karaoke nights. Simply connect your device to the speaker via Bluetooth and start singing your favorite songs with the wireless microphone. Whether you’re hosting a party or just having a fun night in, this speaker will take your karaoke experience to the next level.  <br/>\r\n\r\n', 'Bluetooth Speaker KTS-1762', '2024-09-09 11:09:50', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1),
 	(92, 3300, 20, 'Pixel control range <br/>\r\nSingle color: Max 320 x32,640 x16 pixels <br/>\r\nDual Color: Max 160x32 pixels <br/>\r\nCommunication: WiFi <br/>\r\nInterface: 2 xhub12, 1 xhub08 ports <br/>\r\nScan way: 1/4 scan color monochrome p10 led display <br/>\r\nProgram quantity: Max 1000pcs, can play by time section or control by buttons <br/>\r\nArea quantity: 20 areas with separate area, and separate special effects and border <br/>\r\nDisplay display: text, timing, counting, lunar calendar <br/>\r\nClock function: Support digital clock, Dial clock, lunar time <br/>\r\nThe font, size, color and position can be set freely <br/>\r\nSupport multiple time zones <br/>\r\nExtended equipment: brightness sensor, it can not support weather and humidity sensor <br/>\r\nAuto switch screen: support switch machine <br/>\r\ndimming: support In mode 3 brightness mode <br/>', 'LED Driver Controller HUIDU W2', '2024-09-09 11:17:14', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1),
 	(93, 10000, 10, 'Brand: Den-B <br/>\r\nProduct Name: Digital Video DIVX DVD Player <br/>\r\nModel No: DVD-399 <br/>\r\nUnit Dimensions: 43 x 22 x 5 cm <br/>\r\nPower: Input: 220-240V 50/60Hz, Output: 15W <br/>\r\nCompatibility: MP4, DVD, SVCD, VCD, CD, MP3, DIVX <br/>\r\nInput/ Output Ports: VGA: 1, USB: 1, MIC: 2, Card Reader: 1, Mix L/R: 2, Y/Cb/Cr: 3, COAXIAL: 1, VIDEO: 1, S-VIDEO: 1, AUDIO: 6 <br/>\r\nPlay-Back Function: Audio CD: Yes, MP3: Yes, KODAK Picture CD: Yes, JPEG Disc: Yes, DIVX: Yes <br/>\r\nBox Contents: DVD Player: 1, Remote Control: 1 (batteries not included – requires 2 x ‘AAA’ batteries), Audio Cable with Connectors: 3 (Red, White, Yellow), User Manual: 1 <br/>', 'DEN-B DVD Player', '2024-09-09 16:49:01', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1),
@@ -833,7 +874,14 @@ REPLACE INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_
 	(101, 41000, 20, 'The device runs on the Android 14 operating system. The device is powered by Qualcomm SM6225 Snapdragon 680 4G processor while the GPU is Adreno 610. It features Bluetooth 5.3, GPS, GLONASS, GALILEO, BDS and USB Type-C 2.0. <br/> <br/>\r\n\r\nSamsung Galaxy A06 is fueled with a Li-Po 5000 mAh + 25W wired battery. The device features a 6.7 inches PLS LCD that has a 720 x 1600 pixels resolution. The device comes in various colors including Blue, Gold, and White. The device supports single SIM (Nano-SIM) or Dual SIM (Nano-SIM, dual stand-by) and it is built with a glass front, plastic back, and plastic frame. <br/><br/>\r\n\r\nIt features a dual camera setup: 50 MP (wide) + 2 MP (depth) while on the front there is an 8 MP camera. The sensors include side-mounted fingerprint, accelerometer, proximity, and compass', 'Samsung Galaxy A06 6GB RAM 128GB Memory', '2024-09-14 20:12:17', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
 	(102, 40000, 30, 'Dive into immersiveness <br/>\r\nEnjoy it all in stellar clarity. With the 6.7-inch FHD+ display, your favorite contents and games become immersive with seamless, vivid picture quality. <br/><br/>\r\n\r\nEmbracing the essentials<br/>\r\nA refined build and finish. Available in Light Green, Silver and Black Galaxy A05s brings the style in form factor.<br/><br/>\r\n\r\nCapture more with multiple cameras<br/>\r\nYour moments to savor and share<br/>\r\n\r\nIt is all there. Revisit your landscapes captured with the 50MP Main camera, detailed shots with the 2MP Macro camera, portraits with the 2MP Depth camera for more dimensions, and your favorite selfies with the 13MP Front camera.<br/><br/>\r\n\r\nEquipped for superior performance <br/>\r\nCarry on doing what you love. With a powerful Snapdragon 680 processor, 6GB of memory and 128GB internal storage, Galaxy A05s is equipped with the performance capacity for seamless gaming, viewing, and sharing on social media. <br/><br/>\r\n\r\nPower that keeps you going <br/>\r\nThe 5,000mAh (typical) battery gives you more time to do what you love—streaming, sharing, gaming and more. And with up to 25W of Super-Fast Charging, Galaxy A05s gets back to full power, quickly. <br/><br/>\r\n\r\nSide Fingerprint Sensor<br/>\r\nYour security, double-checked by the side fingerprint sensor accessible only by your fingerprint.', 'Samsung Galaxy A05s 4GB RAM 64GB Memory', '2024-09-14 20:35:07', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
 	(103, 42000, 20, 'Brand: Samsung <br/>\r\nModel: Galaxy A05s <br/>\r\nEdition: 6GB|128GB|25 <br/>\r\nFeatures: 4G, Dual SIM, Mini SIM, USB Type-C Port, Fast Charging, Android, Expandable Memory, 6 GB RAM, Bluetooth, Wifi, GPS, Fingerprint Sensor', 'SAMSUNG Galaxy A05s 6 GB RAM 128 GB Memory', '2024-09-14 21:13:42', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
-	(104, 2850, 30, 'The wireless microphone was designed to deliver a high sound quality so everybody can hear your speech clear and concise. The device uses a 2.4gHz signal transmission that ensures a crisp and clear sound, eliminating background noise.This microphone lavalier can be used for a great variety of purposes. It can be used for streaming, vlogging, recording, meetings, or only classes, offering a professional ambient to deliver your speech. <br/> <br/>\r\nThe wireless mic offers professional full band audio 44.1-48kHz stereo CD quality, more than 6 times the frequency of conventional mono microphones. Real-Time Auto-Sync Technology, reduce the video post-editing. Support Multi-Channel Real-Time Mixing, it can synchronize the background music for phone and human voice in real time. <br/> <br/>\r\nUsing real-time auto-sync technology, which extremely reduce the video post-editing. Support Multi-Channel Real-Time Mixing, it can synchronize the background music for phone and human voice in real time\r\n', 'Wireless Collar Microphone K35', '2024-09-14 21:28:11', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1);
+	(104, 2850, 30, 'The wireless microphone was designed to deliver a high sound quality so everybody can hear your speech clear and concise. The device uses a 2.4gHz signal transmission that ensures a crisp and clear sound, eliminating background noise.This microphone lavalier can be used for a great variety of purposes. It can be used for streaming, vlogging, recording, meetings, or only classes, offering a professional ambient to deliver your speech. <br/> <br/>\r\nThe wireless mic offers professional full band audio 44.1-48kHz stereo CD quality, more than 6 times the frequency of conventional mono microphones. Real-Time Auto-Sync Technology, reduce the video post-editing. Support Multi-Channel Real-Time Mixing, it can synchronize the background music for phone and human voice in real time. <br/> <br/>\r\nUsing real-time auto-sync technology, which extremely reduce the video post-editing. Support Multi-Channel Real-Time Mixing, it can synchronize the background music for phone and human voice in real time\r\n', 'Wireless Collar Microphone K35', '2024-09-14 21:28:11', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1),
+	(105, 175000, 1, 'The VT02 Visual IR Thermometer combines the convenience of a spot thermometer with the visual advantage of a thermal imager creating a brand new tool category - a troubleshooting camera with infrared heat map. <br/>\r\nUsing hyper-thin pyroelectric technology, Fluke discovered a way to push the limits of this technology pioneering an array dense enough to create an infrared heat map. The VT02 Visual IR Thermometer is a great in-between tool for those times when a single spot temperature reading isn t enough and a high-resolution thermal image is more than you need, or can afford. <br/>\r\nNow you can detect and capture issues instantaneously with digital and thermal blended images, pinpoint hot and cold spots with temperature markers, and document problems efficiently with SmartView professional reporting software! <br/><br/>', 'Fluke VT02 Visual IR Thermometer', '2024-09-18 19:41:58', 300, 350, 1, 1, 'tharinduchanaka6@gmail.com', 1),
+	(106, 61000, 20, 'Awesome belongs to anyone with the new Samsung Galaxy A15 5G. Built with all the essential features, Galaxy A15 5G makes it easier to embrace cutting edge innovation while providing unmatched value. Immerse yourself in your favorite content, showcased in crisp clarity on a bright display. Capture and cherish precious moments spent with friends and family using a triple lens camera system, and never worry about running out of space with expandable storage. Power through your day with a reliable battery that charges at lightning speed with Super Fast Charging. Plus, with multilayered Knox Security, you can trust that your A15 5G keeps your personal data safe and secure. Experience the awesomeness in every day with Galaxy A15 5G where innovation meets accessibility.', 'Samsung Galaxy A15 5G 8GB RAM 256GB Memory', '2024-09-18 19:53:50', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
+	(107, 49000, 20, 'Samsung Galaxy A15 4G <br/>\r\n128gb Storage <br/>\r\nUnlocked To any Network <br/>\r\nWhite & Black colours Available <br/>\r\n1 Year Warranty <br/>\r\nBrand New in Box <br/>\r\nDiscover the Samsung A15 – a powerhouse with a stunning 50MP camera, vibrant 6.5 inches AMOLED display, and blazing performance. Upgrade now! ', 'Samsung Galaxy A15 4G 6GB RAM 128GB Memory', '2024-09-18 20:06:43', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
+	(108, 30000, 20, 'Display: 6.71 inches Dot Drop Display <br/>\r\nResolution: 720 x 1650 <br/>\r\nRefresh Rate: Up to 90Hz <br/>\r\nProcessor: Mediatek Helio G36 <br/>\r\nOperating System: Android 14 (Go edition), MIUI <br/>\r\nRear Camera: 8MP + 0.08MP (auxiliary lens) <br/>\r\nFront Camera: 5MP front camera <br/>\r\nSecurity: Side fingerprint sensor, AI Face Unlock <br/>\r\nBattery: 5000mAh (typ) <br/>\r\nCharging: 10W fast charging, USB Type-C <br/>', 'XIAOMI Redmi A3 3GB RAM 64GB Memory', '2024-09-18 20:45:55', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
+	(109, 33000, 30, '4G, Dual SIM, Mini SIM, USB Type-C Port, Fast Charging, Android, Expandable Memory, 4 GB RAM, Dual Camera, Bluetooth, Wifi, GPS, Fingerprint Sensor & 1 year warranty <br/>\r\nTechnology - GSM / HSPA / LTE <br/>\r\nDisplay - 6.71 inches, 106.5 cm2  <br/>\r\nMemory - 4GB/128GB <br/>\r\nMain Camera - 8 MP <br/>\r\nSelfie Camera - 5MP <br/>\r\nBattery Type - 5000m Ah Non-Removable', 'Xiaomi A3 4GB RAM 128GB Memory', '2024-09-18 21:07:39', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
+	(110, 35000, 20, '4 GB RAM | 128 GB ROM <br/>\r\n17.12 cm (6.74 inch) Display <br/>\r\n50MP Rear Camera <br/>\r\n5000 mAh Battery  <br/>\r\n1 Year warranty <br/> ', 'Xiaomi Redmi 13C 4GB RAM 128GB Memory', '2024-09-18 21:18:45', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4),
+	(111, 39500, 20, '4G, Dual SIM, Micro SIM, USB Type-C Port, Fast Charging, Android, 6 GB RAM, Dual Camera, Bluetooth, Wifi, GPS, Fingerprint Sensor <br/>\r\n\r\n<b>Description</b>\r\n(new arrivals) <br/>\r\nModel:- Redmi 13C  <br/>\r\nStorage:- 6GB 128GB  <br/>\r\nColor:- Midnight Black, Navy Blue, Glacier White <br/>\r\nNo Any Country Lock <br/>\r\niPhone To Android Exchange Possible <br/>\r\nTRCSL Approved  <br/>\r\nOne Year Software and Hardware Warranty  <br/>', 'REDMI 13c 5G 6GB RAM 128GB Memory', '2024-09-18 22:00:03', 300, 350, 1, 4, 'tharinduchanaka6@gmail.com', 4);
 
 -- Dumping structure for table ceonline.profile_image
 CREATE TABLE IF NOT EXISTS `profile_image` (
