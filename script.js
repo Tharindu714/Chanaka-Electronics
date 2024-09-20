@@ -791,6 +791,8 @@ function sort1(x) {
     cat = "2";
   } else if (document.getElementById("spares").checked) {
     cat = "3";
+  } else if (document.getElementById("mobiles").checked) {
+    cat = "4";
   }
 
   var sortproductform = new FormData();
@@ -813,6 +815,39 @@ function sort1(x) {
   };
 
   request.open("POST", "SortProcess.php", true);
+  request.send(sortproductform);
+}
+
+function sortseller(x) {
+  // var search = document.getElementById("search");
+  var sell = "0";
+
+  if (document.getElementById("supe").checked) {
+    sell = "1";
+  } else if (document.getElementById("tv").checked) {
+    sell = "2";
+  } else if (document.getElementById("alp").checked) {
+    sell = "4";
+  } else if (document.getElementById("d").checked) {
+    sell = "3";
+  }
+
+  var sortproductform = new FormData();
+
+  sortproductform.append("sell", sell);
+  sortproductform.append("page", x);
+
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (request.readyState == 4) {
+      var text11 = request.responseText;
+
+      document.getElementById("sortseller").innerHTML = text11;
+    }
+  };
+
+  request.open("POST", "SellerSortProcess.php", true);
   request.send(sortproductform);
 }
 

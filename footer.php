@@ -90,7 +90,7 @@
                                         <ul class="footer-links">
                                             <li><a href="http://chanakaelectronics.000webhostapp.com/index.php">About Us</a></li>
                                             <li><a href="tel:+94778200344">Contact Us</a></li>
-                                            <li><a href="#">Terms & Conditions</a></li>
+                                            <li><a href="Policies.php">Terms & Conditions</a></li>
                                         </ul>
                                     </div>
                                 </div>

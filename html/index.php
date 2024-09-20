@@ -96,6 +96,15 @@ if (isset($_SESSION["aduser"])) {
               </li>
 
               <li class="sidebar-item">
+                <a class="sidebar-link" href="../SerachBySeller.php" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-home-dollar text-light"></i>
+                  </span>
+                  <span class="hide-menu text-light">Search By Supplier</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
                 <a class="sidebar-link" href="../addProduct.php" aria-expanded="false">
                   <span>
                     <i class="ti ti-drag-drop text-light"></i>

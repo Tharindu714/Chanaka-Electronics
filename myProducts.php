@@ -105,7 +105,7 @@ if (isset($_SESSION["aduser"])) {
 												<input type="radio" id="Electronic" name="r1">
 												<label for="Electronic">
 													<span></span>
-													Sort By - Electronics
+													Sort By - Electronic Items
 												</label>
 											</div>
 
@@ -113,7 +113,7 @@ if (isset($_SESSION["aduser"])) {
 												<input type="radio" id="Electricals" name="r1">
 												<label for="Electricals">
 													<span></span>
-													Sort By - Electricals
+													Sort By - Electrical Items
 												</label>
 											</div>
 
@@ -121,7 +121,15 @@ if (isset($_SESSION["aduser"])) {
 												<input type="radio" id="spares" name="r1">
 												<label for="spares">
 													<span></span>
-													Sort By - SpareParts
+													Sort By - Spare Parts
+												</label>
+											</div>
+
+											<div class="input-checkbox">
+												<input type="radio" id="spares" name="r1">
+												<label for="spares">
+													<span></span>
+													Sort By - Mobiles Phones
 												</label>
 											</div>
 										</div>
@@ -336,14 +344,13 @@ if (isset($_SESSION["aduser"])) {
                                    WHERE `admin_email` = '" . $email . "';");
 									$product_num = $product_Rs->num_rows;
 
-									$result_per_page = 9;
+									$result_per_page = 6;
 									$number_of_pages = ceil($product_num / $result_per_page); // EX :-(2-1)*4  (3-1)*4
 
 									$page_results = ($pageno - 1) * $result_per_page;
-									$selected_rs = Database::search("SELECT * FROM `product`
-                                   WHERE `admin_email` = '" . $email . "'
+									$selected_rs = Database::search("SELECT * FROM `product` WHERE `admin_email` = '" . $email . "'
                                     LIMIT " . $result_per_page . "
-                                    OFFSET " . $page_results . "");
+                                    OFFSET " . $page_results);
 
 									$selected_num = $selected_rs->num_rows;
 

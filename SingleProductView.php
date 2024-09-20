@@ -228,11 +228,23 @@ product.delivery_fee_other,product.category_id,product.status_id,product.admin_e
 									</div>
 
 								</div>
-								<div class="add-to-cart" style="display: flex; flex-direction: column;">
-									<button class="add-to-cart-btn" style="margin-top: 10px; width: 275px;" ; type="submit" id="payhere-payment" onclick="payNow(<?php echo $pid; ?>);"><i class="fa fa-usd"></i>buy
-										now</button>
+								<?php
+								if ($price > 49000) {
+								?>
+									<div class="add-to-cart" style="display: flex; flex-direction: column;">
+										<button class="add-to-cart-btn" style="margin-top: 10px; width: 275px;" type="submit"><a href="tel:+94778200344" class="text-light text-decoration-none"><i class="fa fa-call"></i>Contact Us</a></button>
+									</div>
+								<?php
+								} else {
+								?>
+									<div class="add-to-cart" style="display: flex; flex-direction: column;">
+										<button class="add-to-cart-btn" style="margin-top: 10px; width: 275px;" type="submit" id="payhere-payment" onclick="payNow(<?php echo $pid; ?>);"><i class="fa fa-usd"></i>buy
+											now</button>
+									</div>
+								<?php
+								}
+								?>
 
-								</div>
 
 								<ul class="product-btns">
 									<?php

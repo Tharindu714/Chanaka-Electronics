@@ -15,12 +15,6 @@ $price = $_POST["price"];
 $query = "SELECT * FROM `product` WHERE `admin_email` = '" . $user["email"] . "'"; //This query is common for all filters
 $status = 0;
 
-// if (!empty($search)) {
-
-//     $query .= " AND `title` LIKE '%" . $search . "%'"; // Now we don't need above common query
-//     // All we need to add this 'Wild Card' query for this.
-// }
-
 if ($category != "0") {
 
     if ($category == "1") {
@@ -29,6 +23,8 @@ if ($category != "0") {
         $query .= "AND `category_id`= '2' ";
     } else if ($category == "3") {
         $query .= "AND `category_id`= '3' ";
+    }else if($category == "4"){
+        $query .= "AND `category_id`= '4' ";
     }
 }
 
@@ -100,7 +96,7 @@ if ($time != "0" && $price != "0") {
         $number_of_pages = ceil($product_num / $result_per_page);
 
         $page_results = ($pageno - 1) * $result_per_page;
-        $selected_rs = Database::search($query . " LIMIT " . $result_per_page . " OFFSET " . $page_results . "");
+        $selected_rs = Database::search($query . " LIMIT " . $result_per_page);
 
         $selected_num = $selected_rs->num_rows;
 

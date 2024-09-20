@@ -56,12 +56,12 @@ if (isset($_SESSION["user"])) {
 
 
                                 </div>
-                                <div class="col-md-3 col-sm-5 col-xs-5 search-bar">
+                                <!-- <div class="col-md-3 col-sm-5 col-xs-5 search-bar">
                                     <div class="header-search">
                                         <input class="input-search" placeholder="Search here" id="c">
                                         <button class="search-icon" style="font-size: 14px;"><i class="fa fa-search" aria-hidden="true" onclick="searchCart();"></i></button>
                                     </div>
-                                </div>
+                                </div> -->
 
 
                             </div>
@@ -107,153 +107,183 @@ if (isset($_SESSION["user"])) {
 
                 } else {
                 ?>
-                    <div class="col-12 col-lg-9" id="searchresult">
-                        
+                    <div class="col-12 col-lg-8">
+
                         <?php include "cartcalculationProcess.php" ?>
+                        <?php
+                        $cart_rs = Database::search("SELECT * FROM `cart` WHERE `user_email`='" . $email . "'");
+                        $cart_num = $cart_rs->num_rows;
+                        $query = "SELECT * FROM `product`";
 
-                        <div class="row" style="display: flex; justify-content: center;">
-                            <div class="wishlist-box1 col-lg-8" style="height:325px; width:80%; margin-bottom: 20px;">
-                                <div class="product-wishlist" style="display:flex; flex-direction:row; display: flex; align-items: center; display: flex; justify-content: center;">
-                                    <div class="product-image">
+                        for ($x = 0; $x < $cart_num; $x++) {
+                            $cart_data = $cart_rs->fetch_assoc();
 
-                                        <img src="<?php echo $image_data["code"]; ?>" alt="" class="img">
+                            $product_rs = Database::search("SELECT * FROM `product` WHERE `id` = '" . $cart_data["product_id"] . "'");
+                            $product_data = $product_rs->fetch_assoc();
 
-                                    </div>
-                                    <div class="product-details" style="margin-left: 15px;">
-                                        <div class="product-body">
-                                            <p class="product-category">Seller: <?php echo $product_data["admin_email"]; ?></p>
-                                            <h3 class="product-name"><a href="#"><?php echo $product_data["title"] ?></a></h3>
-                                            <?php
-                                            if ($difference->format('%d') >= 7) {
-                                            } else {
-                                            ?>
-                                                <div class="product-label1">
-                                                    <span class="new">NEW</span>
-                                                </div>
-                                            <?php
-                                            }
-                                            ?>
-                                            <h4 class="product-price">Rs. <?php echo $product_data["price"] * $cart_data["qty"]; ?> .00</h4><br>
-                                            <?php
-                                            $Rf_rs1 = Database::search("SELECT * FROM `feedback`WHERE `product_id`='" . $product_data["id"] . "' ORDER BY `date` DESC");
-                                            $Rf_num1 = $Rf_rs1->num_rows;
-                                            $Rf_data1 = $Rf_rs1->fetch_assoc();
-                                            ?>
-                                            <div class="product-rating">
+                            $image_rs = Database::search("SELECT * FROM `image` WHERE `product_id`='" . $cart_data["product_id"] . "'");
+                            $image_data = $image_rs->fetch_assoc();
+
+                            $total = $total+ ($product_data["price"] * $cart_data["qty"]);
+
+                            $seller_rs = Database::search("SELECT * FROM `user` WHERE `email` = '" . $cart_data["user_email"] . "'");
+                            $seller_data = $seller_rs->fetch_assoc();
+                            $seller = $seller_data["fname"] . " " . $seller_data["lname"];
+
+                            $start_date = new DateTime($product_data["datetime_added"]);
+
+                            $tdate = new DateTime();
+                            $tz = new DateTimeZone("Asia/Colombo");
+                            $tdate->setTimezone($tz);
+
+                            $end_date = new DateTime($tdate->format("Y-m-d H:i:s"));
+
+                            $difference = $end_date->diff($start_date);
+
+                        ?>
+                            <div class="row" style="display: flex; justify-content: center;">
+                                <div class="wishlist-box1 col-lg-8" style="height:325px; width:80%; margin-bottom: 20px;">
+                                    <div class="product-wishlist" style="display:flex; flex-direction:row; display: flex; align-items: center; display: flex; justify-content: center;">
+                                        <div class="product-image">
+
+                                            <img src="<?php echo $image_data["code"]; ?>" alt="" class="img">
+
+                                        </div>
+                                        <div class="product-details" style="margin-left: 15px;">
+                                            <div class="product-body">
+                                                <p class="product-category">Seller: <?php echo $product_data["admin_email"]; ?></p>
+                                                <h3 class="product-name"><a href="#"><?php echo $product_data["title"] ?></a></h3>
                                                 <?php
-                                                if ($Rf_num1 == 0) {
-                                                ?>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                <?php
+                                                if ($difference->format('%d') >= 7) {
                                                 } else {
                                                 ?>
-                                                    <?php
-                                                    if ($Rf_data1["type"] == 5) {
-                                                    ?>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                    <?php
-                                                    if ($Rf_data1["type"] == 4) {
-                                                    ?>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                    <?php
-                                                    if ($Rf_data1["type"] == 3) {
-                                                    ?>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                    <?php
-                                                    if ($Rf_data1["type"] == 2) {
-                                                    ?>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                    <?php
-                                                    if ($Rf_data1["type"] == 1) {
-                                                    ?>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-
-                                                    <?php
-                                                    }
-                                                    ?>
+                                                    <div class="product-label1">
+                                                        <span class="new">NEW</span>
+                                                    </div>
                                                 <?php
                                                 }
                                                 ?>
-                                            </div>
-                                            <div>
-                                                <span class="product-available"><?php echo $product_data["qty"]; ?> In Stock</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-details" style="margin-left: 10px; margin-right: 10px;">
-                                        <div class="">
-                                            <div class="qty-label" style="width: 200px; margin-top: 30px;">
+                                                <h4 class="product-price">Rs. <?php echo $product_data["price"] * $cart_data["qty"]; ?> .00</h4><br>
+                                                <?php
+                                                $Rf_rs1 = Database::search("SELECT * FROM `feedback`WHERE `product_id`='" . $product_data["id"] . "' ORDER BY `date` DESC");
+                                                $Rf_num1 = $Rf_rs1->num_rows;
+                                                $Rf_data1 = $Rf_rs1->fetch_assoc();
+                                                ?>
+                                                <div class="product-rating">
+                                                    <?php
+                                                    if ($Rf_num1 == 0) {
+                                                    ?>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <?php
+                                                        if ($Rf_data1["type"] == 5) {
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
 
-                                                <div class="input-number">
-                                                    <input type="number" style="outline: none;" value="<?php echo $cart_data["qty"]; ?>" pattern="[0-9]" id="qty_input" onkeyup='checkValue(<?php echo $cart_data["qty"]; ?>);'>
-                                                    <span class="qty-up" onkeyup='qty_inc(<?php echo $product_data["qty"]; ?>);' onclick='AddtoCart(<?php echo $product_data["id"]; ?>)'>+</span>
-                                                    <span class="qty-down" onkeyup='qty_dec(<?php echo $product_data["qty"]; ?>);' onclick='MinCart(<?php echo $product_data["id"]; ?>)'>-</span>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+                                                        if ($Rf_data1["type"] == 4) {
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+                                                        if ($Rf_data1["type"] == 3) {
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+                                                        if ($Rf_data1["type"] == 2) {
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <?php
+                                                        if ($Rf_data1["type"] == 1) {
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div>
+                                                    <span class="product-available"><?php echo $product_data["qty"]; ?> In Stock</span>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="product-details" style="margin-left: 10px; margin-right: 10px;">
+                                            <div class="">
+                                                <div class="qty-label" style="width: 200px; margin-top: 30px;">
 
+                                                    <div class="input-number">
+                                                        <input type="number" style="outline: none;" value="<?php echo $cart_data["qty"]; ?>" pattern="[0-9]" id="qty_input" onkeyup='checkValue(<?php echo $cart_data["qty"]; ?>);'>
+                                                        <span class="qty-up" onkeyup='qty_inc(<?php echo $product_data["qty"]; ?>);' onclick='AddtoCart(<?php echo $product_data["id"]; ?>)'>+</span>
+                                                        <span class="qty-down" onkeyup='qty_dec(<?php echo $product_data["qty"]; ?>);' onclick='MinCart(<?php echo $product_data["id"]; ?>)'>-</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="add-to-cart" style="display: flex; flex-direction: column; ">
+                                                <!-- <button class="add-to-cart-btn" style="margin-top: 10px; width: 250px;"><i class="fa fa-shopping-cart"></i> add to cart</button> -->
+                                                <button class="add-to-cart-btn1" style="margin-top: 10px; width: 200px; font-weight: bold;" type="submit" id="payhere-payment" onclick="payNow(<?php echo $product_data['id']; ?>);"><i class="fa fa-usd"></i> &nbsp; BUY NOW</button>
+                                                <button class="add-to-cart-btn" style="margin-top: 10px; width: 200px;" onclick="deleteFromCart(<?php echo $cart_data['id']; ?>)" ;><i class="fa fa-trash"></i>remove</button>
+                                            </div>
                                         </div>
 
-                                        <div class="add-to-cart" style="display: flex; flex-direction: column; ">
-                                            <!-- <button class="add-to-cart-btn" style="margin-top: 10px; width: 250px;"><i class="fa fa-shopping-cart"></i> add to cart</button> -->
-                                            <button class="add-to-cart-btn1" style="margin-top: 10px; width: 200px; font-weight: bold;" type="submit" id="payhere-payment" onclick="payNow(<?php echo $product_data['id']; ?>);"><i class="fa fa-usd"></i> &nbsp; BUY NOW</button>
-                                            <button class="add-to-cart-btn" style="margin-top: 10px; width: 200px;" onclick="deleteFromCart(<?php echo $cart_data['id']; ?>)" ;><i class="fa fa-trash"></i>remove</button>
-                                        </div>
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-
-
-
+                        <?php
+                        }
+                        ?>
                     </div>
 
                     <!-- summary -->
-                    <div class="col-12 col-lg-3" id="searchresult">
+                    <div class="col-12 col-lg-4" id="searchresult">
                         <div class="row product-wishlist">
 
                             <div class="col-12" style="display:flex; justify-content: center; align-content: center;">
@@ -270,7 +300,7 @@ if (isset($_SESSION["user"])) {
                                 </div>
 
                                 <div class="col-6 mb-3 text-end">
-                                    <span class="fs-5 f1" style="color: black; align-items:end; font-size: 16px;">Rs. <?php echo $total; ?> .00</span>
+                                    <span class="fs-5 f1" style="color: black; align-items:end; font-size: 16px;">Rs. <?php echo $total*1/2; ?> .00</span>
                                 </div>
                             </div>
                             <?php

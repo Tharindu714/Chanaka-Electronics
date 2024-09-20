@@ -51,13 +51,12 @@ if (isset($_SESSION["user"])) {
 
 
                                 </div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 search-bar">
+                                <!-- <div class="col-md-3 col-sm-6 col-xs-6 search-bar">
                                     <div class="header-search">
-
                                         <input class="input-search" placeholder="Search here" id="s">
                                         <button class="search-icon" style="font-size: 14px;"><i class="fa fa-search" aria-hidden="true" onclick="searchWatchlist();"></i></button>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
@@ -101,7 +100,7 @@ if (isset($_SESSION["user"])) {
 
             ?>
                 <!-- <responsive-Large-screen> -->
-                <div class="col-12" id="searchresult">
+                <div class="col-12">
                     <div class="row " style="display: flex; justify-content: center;">
                         <?php
                         $query = "SELECT * FROM `product`";
@@ -130,7 +129,7 @@ if (isset($_SESSION["user"])) {
                                 <div class="product-wishlist" style="display:flex; flex-direction:row; display: flex; align-items: center; display: flex; justify-content: center;">
                                     <div class="product-image">
 
-                                        <img src="<?php echo $image_data["code"]; ?>" alt="" class="img">
+                                        <img src="<?php echo $image_data["code"]; ?>" alt="" class="img-thumbnail img-fluid" style="height:300px;">
 
                                     </div>
                                     <div class="product-details" style="margin-left: 15px;">
@@ -238,6 +237,10 @@ if (isset($_SESSION["user"])) {
                                 </div>
                             </div>
                     </div>
+                <?php
+
+                        }
+                ?>
                 </div>
                 <!-- <responsive-Large-screen> -->
 
@@ -473,10 +476,6 @@ if (isset($_SESSION["user"])) {
                             </div>
 
                         </div>
-                    <?php
-
-                        }
-                    ?>
                     </div>
                 </div>
                 <!-- <responsive-small-screen> -->
